@@ -1,10 +1,10 @@
 export interface PromiseResolution<T> {
-  status: 'fulfilled';
+  status: "fulfilled";
   value: T;
 }
 
 export interface PromiseRejection {
-  status: 'rejected';
+  status: "rejected";
   reason: Error;
 }
 
@@ -14,12 +14,11 @@ export type PromiseResult<T> = PromiseResolution<T> | PromiseRejection;
 const allSettled = <T>(promises: Promise<T>[]): Promise<PromiseResult<T>[]> => {
   let wrappedPromises = promises.map(p =>
     Promise.resolve(p).then(
-      val => ({ status: 'fulfilled', value: val }),
-      (err: Error) => ({ status: 'rejected', reason: err })
+      val => ({ status: "fulfilled", value: val }) as PromiseResolution<T>,
+      (err: Error) => ({ status: "rejected", reason: err }) as PromiseRejection
     )
   );
 
-  // @ts-expect-error - typescript isn't smart enough to see the disjoint here
   return Promise.all(wrappedPromises);
 };
 

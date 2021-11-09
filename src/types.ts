@@ -1,22 +1,17 @@
-export interface Images {
+export interface Image {
   src: string;
   href?: string;
   alt?: string;
 }
 export interface CoverflowProps {
   className?: string;
-  images: Images[];
+  elements: Element[]|NodeListOf<Element>|HTMLCollection;
   slidesPerSide?: number;
   rotation?: number;
   opacityInterval?: number[];
   scaleInterval?: number[];
 }
-export interface FetchedItem {
-  image: HTMLImageElement;
-  alt?: string;
-  href?: string;
-}
-export interface ImageInfo {
+export interface ElementInfo {
   isCurrentImage: boolean;
   isVisible: boolean;
   height: number;
@@ -26,7 +21,6 @@ export interface ImageInfo {
   scale: number;
   rotate: number;
   opacity: number;
-  src: string;
+  element: Element;
   href: string;
-  alt: string;
 }

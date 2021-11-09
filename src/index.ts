@@ -1,6 +1,7 @@
 'use strict';
-export { CoverflowProps, Images } from './types';
+export { CoverflowProps } from './types';
 
-const Coverflow = require('./Coverflow');
 
-module.exports = Coverflow.default || Coverflow;
+import Coverflow from './Coverflow';
+
+export default Coverflow;
