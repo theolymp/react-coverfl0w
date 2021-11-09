@@ -18,7 +18,7 @@ var fetchElement = function (element) {
                 element_1.setAttribute('src', element_1.getAttribute('src'));
             }));
         };
-        for (var i in images) {
+        for (var i = 0; i < images.length; i++) {
             _loop_1(i);
         }
         if (tasks.length < 1) {
